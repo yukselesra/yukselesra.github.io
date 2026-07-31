@@ -5,17 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- ============================================================
-     Replace YOURUSERNAME everywhere before publishing (3 places
-     below plus the JSON-LD block). Everything else is ready.
+     Esra Yüksel — personal site. Published at
+     https://yukselesra.github.io
      ============================================================ -->
 <title>Esra Yüksel — Theoretical Nuclear Physics, University of Surrey</title>
 <meta name="description" content="Esra Yüksel is a Senior Lecturer in Theoretical Nuclear Physics at the University of Surrey, working on nuclear energy density functionals, finite-temperature QRPA, weak interaction rates in stellar environments, and machine learning for nuclear properties.">
-<link rel="canonical" href="https://YOURUSERNAME.github.io/">
+<link rel="canonical" href="https://yukselesra.github.io/">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Esra Yüksel — Theoretical Nuclear Physics">
 <meta property="og:description" content="Nuclear energy density functionals, finite-temperature QRPA, weak interaction rates in stellar environments, and machine learning in nuclear physics.">
-<meta property="og:url" content="https://YOURUSERNAME.github.io/">
+<meta property="og:url" content="https://yukselesra.github.io/">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,7 @@
   "jobTitle": "Senior Lecturer in Theoretical Nuclear Physics",
   "affiliation": { "@type": "Organization", "name": "University of Surrey" },
   "email": "e.yuksel@surrey.ac.uk",
-  "url": "https://YOURUSERNAME.github.io/",
+  "url": "https://yukselesra.github.io/",
   "sameAs": [
     "https://www.surrey.ac.uk/people/esra-yuksel",
     "https://scholar.google.com/citations?user=m6lN7uwAAAAJ",
@@ -152,11 +152,10 @@ footer{border-top:1px solid var(--rule);padding-top:1.25rem;font-family:"IBM Ple
     <p class="lead">I study atomic nuclei under conditions that cannot be reproduced in a laboratory — extreme proton–neutron asymmetry near the drip lines, and the temperatures of billions of kelvin reached in core-collapse supernovae and neutron star mergers — and connect those calculations to what can actually be measured.</p>
 
     <figure class="chart">
-      <svg viewBox="0 0 720 96" role="img" aria-label="Schematic chart of the nuclides: the valley of stability running from light to heavy nuclei, fading out towards the drip lines.">
-        <g id="nuclides"></g>
-        <line x1="0" y1="93" x2="720" y2="93" stroke="#dfe3e8" stroke-width="1"/>
+      <svg viewBox="0 0 610 298" role="img" aria-label="Chart of the nuclides plotted as neutron number against proton number. A narrow valley of stability runs from light nuclei, where neutron and proton numbers are roughly equal, out to heavy nuclei with a large neutron excess. Bound nuclei extend only a short distance to the proton-rich side but far towards the neutron drip line. Magic numbers are marked.">
+        <g id="chart"></g>
       </svg>
-      <figcaption>N →&nbsp;&nbsp;&nbsp;the nuclide chart; colour marks distance from stability</figcaption>
+      <figcaption>Chart of the nuclides · the valley of stability, the known region, and the drip lines</figcaption>
     </figure>
 
     <section id="research">
@@ -298,31 +297,127 @@ footer{border-top:1px solid var(--rule);padding-top:1.25rem;font-family:"IBM Ple
 
 <script>
 (function () {
-  const g = document.getElementById('nuclides');
+  const g = document.getElementById('chart');
   if (!g) return;
   const NS = 'http://www.w3.org/2000/svg';
-  const cols = 96, size = 6.5, gap = 1;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  for (let i = 0; i < cols; i++) {
-    const x = i * (size + gap);
-    const centre = 74 - (i / cols) * 58;
-    const width = 1 + Math.round((i / cols) * 4.2);
-    for (let d = -width; d <= width; d++) {
-      const y = centre + d * (size + gap);
-      if (y < 2 || y > 86) continue;
-      const t = Math.abs(d) / (width + 0.6);
-      const r = document.createElementNS(NS, 'rect');
-      r.setAttribute('x', x.toFixed(1));
-      r.setAttribute('y', y.toFixed(1));
-      r.setAttribute('width', size);
-      r.setAttribute('height', size);
-      r.setAttribute('fill', t < 0.25 ? '#1b2a4a' : t < 0.6 ? '#0e6e6b' : '#c8d3d6');
-      r.setAttribute('opacity', (1 - t * 0.55).toFixed(2));
-      r.setAttribute('class', 'cell');
-      if (!reduce) r.style.animationDelay = (i * 7 + Math.abs(d) * 25) + 'ms';
+
+  const NMAX = 224, ZMAX = 104, CELL = 2.5;
+  const padL = 40, padT = 10, padB = 28;
+
+  const x = N => padL + N * CELL;
+  const y = Z => padT + (ZMAX - Z) * CELL;
+
+  const el = (tag, attrs) => {
+    const n = document.createElementNS(NS, tag);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    return n;
+  };
+
+  // Semi-empirical valley of stability: Z = A / (1.98 + 0.0155 A^(2/3))
+  const zStab = A => A / (1.98 + 0.0155 * Math.pow(A, 2 / 3));
+  const nStab = Z => {
+    let best = Infinity, bestA = Z;
+    for (let A = Z; A < 3.4 * Z + 14; A++) {
+      const d = Math.abs(zStab(A) - Z);
+      if (d < best) { best = d; bestA = A; }
+    }
+    return bestA - Z;
+  };
+
+  // Magic numbers
+  const magicN = [2, 8, 20, 28, 50, 82, 126, 184];
+  const magicZ = [2, 8, 20, 28, 50, 82];
+  magicN.forEach(m => {
+    if (m > NMAX) return;
+    g.appendChild(el('line', {
+      x1: x(m) + CELL / 2, y1: padT, x2: x(m) + CELL / 2, y2: y(0) + CELL,
+      stroke: '#dfe3e8', 'stroke-width': 0.8
+    }));
+    const t = el('text', {
+      x: x(m) + CELL / 2, y: y(0) + 16, 'text-anchor': 'middle',
+      'font-family': 'IBM Plex Mono, monospace', 'font-size': 7.5, fill: '#5a626e'
+    });
+    t.textContent = m;
+    g.appendChild(t);
+  });
+  magicZ.forEach(m => {
+    g.appendChild(el('line', {
+      x1: padL, y1: y(m) + CELL / 2, x2: x(NMAX), y2: y(m) + CELL / 2,
+      stroke: '#dfe3e8', 'stroke-width': 0.8
+    }));
+    const t = el('text', {
+      x: padL - 6, y: y(m) + CELL / 2 + 2.8, 'text-anchor': 'end',
+      'font-family': 'IBM Plex Mono, monospace', 'font-size': 7.5, fill: '#5a626e'
+    });
+    t.textContent = m;
+    g.appendChild(t);
+  });
+
+  // Nuclides
+  for (let Z = 1; Z <= ZMAX; Z++) {
+    const ns = nStab(Z);
+    const wp = 0.32 * Z + 3;   // proton-rich side: bound region is narrow
+    const wn = 0.45 * Z + 6;   // neutron-rich side: extends much further
+    const lo = Math.max(0, Math.round(ns - wp));
+    const hi = Math.round(ns + wn);
+
+    for (let N = lo; N <= hi; N++) {
+      if (N > NMAX) break;
+      const d = N - ns;
+      const frac = d < 0 ? -d / wp : d / wn;
+
+      let fill;
+      if (frac < 0.16) fill = '#1b2a4a';        // valley of stability
+      else if (frac < 0.62) fill = '#0e6e6b';   // known / measured
+      else fill = '#c8d3d6';                    // towards the drip lines
+
+      const r = el('rect', {
+        x: x(N).toFixed(2), y: y(Z).toFixed(2),
+        width: CELL - 0.35, height: CELL - 0.35,
+        fill: fill, opacity: (1 - frac * 0.42).toFixed(2), class: 'cell'
+      });
+      if (!reduce) r.style.animationDelay = (Z * 5 + Math.abs(d) * 1.5) + 'ms';
       g.appendChild(r);
     }
   }
+
+  // Axis labels
+  const nlab = el('text', {
+    x: padL + (NMAX * CELL) / 2, y: 296, 'text-anchor': 'middle',
+    'font-family': 'IBM Plex Mono, monospace', 'font-size': 8.5,
+    'letter-spacing': '0.08em', fill: '#5a626e'
+  });
+  nlab.textContent = 'NEUTRON NUMBER  N';
+  g.appendChild(nlab);
+
+  const zlab = el('text', {
+    x: 11, y: padT + (ZMAX * CELL) / 2, 'text-anchor': 'middle',
+    transform: 'rotate(-90 11 ' + (padT + (ZMAX * CELL) / 2) + ')',
+    'font-family': 'IBM Plex Mono, monospace', 'font-size': 8.5,
+    'letter-spacing': '0.08em', fill: '#5a626e'
+  });
+  zlab.textContent = 'PROTON NUMBER  Z';
+  g.appendChild(zlab);
+
+  // Legend
+  const legend = [
+    ['#1b2a4a', 'stability'],
+    ['#0e6e6b', 'known'],
+    ['#c8d3d6', 'drip lines']
+  ];
+  let lx = padL + 6;
+  const ly = padT + 14;
+  legend.forEach(([c, label]) => {
+    g.appendChild(el('rect', { x: lx, y: ly - 5, width: 6, height: 6, fill: c }));
+    const t = el('text', {
+      x: lx + 10, y: ly, 'font-family': 'IBM Plex Mono, monospace',
+      'font-size': 8, fill: '#5a626e'
+    });
+    t.textContent = label;
+    g.appendChild(t);
+    lx += 14 + label.length * 4.6;
+  });
 })();
 </script>
 </body>
