@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ============================================================
+     Replace YOURUSERNAME everywhere before publishing (3 places
+     below plus the JSON-LD block). Everything else is ready.
+     ============================================================ -->
+<title>Esra Yüksel — Theoretical Nuclear Physics, University of Surrey</title>
+<meta name="description" content="Esra Yüksel is a Senior Lecturer in Theoretical Nuclear Physics at the University of Surrey, working on nuclear energy density functionals, finite-temperature QRPA, weak interaction rates in stellar environments, and machine learning for nuclear properties.">
+<link rel="canonical" href="https://YOURUSERNAME.github.io/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Esra Yüksel — Theoretical Nuclear Physics">
+<meta property="og:description" content="Nuclear energy density functionals, finite-temperature QRPA, weak interaction rates in stellar environments, and machine learning in nuclear physics.">
+<meta property="og:url" content="https://YOURUSERNAME.github.io/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Esra Yüksel",
+  "givenName": "Esra",
+  "familyName": "Yüksel",
+  "jobTitle": "Senior Lecturer in Theoretical Nuclear Physics",
+  "affiliation": { "@type": "Organization", "name": "University of Surrey" },
+  "email": "e.yuksel@surrey.ac.uk",
+  "url": "https://YOURUSERNAME.github.io/",
+  "sameAs": [
+    "https://www.surrey.ac.uk/people/esra-yuksel",
+    "https://scholar.google.com/citations?user=m6lN7uwAAAAJ",
+    "https://orcid.org/0000-0002-2892-3208",
+    "https://www.researchgate.net/profile/Esra_Yueksel"
+  ],
+  "knowsAbout": [
+    "Nuclear energy density functionals",
+    "Quasiparticle random phase approximation",
+    "Finite-temperature nuclear structure",
+    "Electron capture and beta decay rates",
+    "Nuclear astrophysics",
+    "Neutron star equation of state",
+    "Machine learning in nuclear physics"
+  ]
+}
+</script>
+
+<style>
+:root{
+  --paper:#fff; --ink:#15181d; --ink-soft:#5a626e; --rule:#dfe3e8;
+  --deep:#1b2a4a; --teal:#0e6e6b; --shell:#c8d3d6; --measure:34rem;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(14,110,107,.3)}
+a:hover{border-bottom-color:var(--teal)}
+a:focus-visible{outline:2px solid var(--deep);outline-offset:3px;border-radius:2px}
+
+.wrap{max-width:64rem;margin:0 auto;padding:0 1.5rem 6rem;display:grid;gap:3.5rem;grid-template-columns:1fr}
+@media (min-width:60rem){
+  .wrap{grid-template-columns:16rem 1fr;gap:4.5rem;padding-top:1rem}
+  .rail{position:sticky;top:3.5rem;align-self:start}
+  main{padding-top:3.5rem}
+}
+.rail{padding-top:3.5rem}
+.name{font-family:Newsreader,Georgia,serif;font-weight:500;font-size:2rem;line-height:1.1;
+  letter-spacing:-.01em;margin:0 0 .5rem}
+.role{margin:0 0 1.5rem;color:var(--ink-soft);font-size:.95rem;line-height:1.5}
+.rail nav ul,.profiles ul{list-style:none;margin:0;padding:0}
+.rail nav li,.profiles li{margin:.35rem 0}
+.rail nav a,.profiles a{font-family:"IBM Plex Mono",monospace;font-size:.8rem;letter-spacing:.02em;
+  color:var(--ink);border-bottom:none}
+.rail nav a:hover,.profiles a:hover{color:var(--teal)}
+.rail nav{margin-bottom:2rem}
+.profiles{border-top:1px solid var(--rule);padding-top:1.25rem}
+.profiles h2{font-family:"IBM Plex Mono",monospace;font-size:.7rem;text-transform:uppercase;
+  letter-spacing:.12em;color:var(--ink-soft);font-weight:500;margin:0 0 .6rem}
+
+.chart{margin:3.5rem 0 2.5rem;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:1.25rem 0}
+.chart svg{width:100%;height:auto;display:block}
+.chart figcaption{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.06em;
+  color:var(--ink-soft);margin-top:.75rem}
+.cell{opacity:0;animation:settle .5s ease forwards}
+@media (prefers-reduced-motion:reduce){.cell{opacity:1;animation:none}}
+@keyframes settle{to{opacity:1}}
+
+section{margin-bottom:3.5rem;scroll-margin-top:2rem}
+section > p,section > ul{max-width:var(--measure)}
+h2.head{font-family:"IBM Plex Mono",monospace;font-size:.72rem;font-weight:500;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--teal);margin:0 0 1rem;padding-bottom:.5rem;border-bottom:1px solid var(--rule)}
+.lead{font-family:Newsreader,Georgia,serif;font-size:1.3rem;line-height:1.5;margin:0 0 1.5rem;max-width:var(--measure)}
+h3{font-size:1rem;font-weight:600;margin:1.75rem 0 .35rem}
+h3:first-of-type{margin-top:0}
+p{margin:0 0 1rem}
+ul.plain{list-style:none;padding:0;margin:0 0 1rem}
+ul.plain li{padding:.3rem 0}
+
+ol.pubs{list-style:none;margin:0;padding:0}
+ol.pubs li{display:grid;grid-template-columns:3.5rem 1fr;gap:1rem;padding:.9rem 0;
+  border-bottom:1px solid var(--rule);max-width:46rem}
+ol.pubs .yr{font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--ink-soft);padding-top:.15rem}
+ol.pubs .t{font-weight:500}
+ol.pubs .src{color:var(--ink-soft);font-size:.9rem}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.04em;color:var(--deep);
+  border:1px solid var(--rule);border-radius:2px;padding:.05rem .3rem;margin-left:.3rem;white-space:nowrap}
+
+footer{border-top:1px solid var(--rule);padding-top:1.25rem;font-family:"IBM Plex Mono",monospace;
+  font-size:.72rem;color:var(--ink-soft)}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header class="rail">
+    <h1 class="name">Esra Yüksel</h1>
+    <p class="role">Senior Lecturer<br>Theoretical Nuclear Physics<br>University of Surrey</p>
+
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#group">Group &amp; opportunities</a></li>
+        <li><a href="#service">Service</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="profiles">
+      <h2>Elsewhere</h2>
+      <ul>
+        <li><a href="https://www.surrey.ac.uk/people/esra-yuksel">Surrey profile</a></li>
+        <li><a href="https://scholar.google.com/citations?user=m6lN7uwAAAAJ">Google Scholar</a></li>
+        <li><a href="https://orcid.org/0000-0002-2892-3208">ORCID</a></li>
+        <li><a href="https://www.researchgate.net/profile/Esra_Yueksel">ResearchGate</a></li>
+        <li><a href="files/cv.pdf">CV (PDF)</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <p class="lead">I study atomic nuclei under conditions that cannot be reproduced in a laboratory — extreme proton–neutron asymmetry near the drip lines, and the temperatures of billions of kelvin reached in core-collapse supernovae and neutron star mergers — and connect those calculations to what can actually be measured.</p>
+
+    <figure class="chart">
+      <svg viewBox="0 0 720 96" role="img" aria-label="Schematic chart of the nuclides: the valley of stability running from light to heavy nuclei, fading out towards the drip lines.">
+        <g id="nuclides"></g>
+        <line x1="0" y1="93" x2="720" y2="93" stroke="#dfe3e8" stroke-width="1"/>
+      </svg>
+      <figcaption>N →&nbsp;&nbsp;&nbsp;the nuclide chart; colour marks distance from stability</figcaption>
+    </figure>
+
+    <section id="research">
+      <h2 class="head">Research</h2>
+
+      <p>My framework is nuclear energy density functional (EDF) theory, in both relativistic and non-relativistic formulations, together with the random phase approximation methods built on top of it.</p>
+
+      <h3>Constraining the functionals</h3>
+      <p>Optimising nuclear energy density functionals against ground-state properties, collective excitation data, and the parity-violating electron scattering measurements CREX and PREX-II. This line of work produced the DD-PCX parametrisation.</p>
+
+      <h3>Nuclei at finite temperature</h3>
+      <p>Finite-temperature extensions of the (quasiparticle) random phase approximation, including the charge-exchange channel. These make it possible to compute electric and magnetic dipole strength, γ-ray strength functions and Gamow–Teller transitions in hot nuclei. Applied globally, they showed that the limits of nuclear existence are not fixed, but shift with temperature.</p>
+
+      <h3>Weak interaction rates in stellar environments</h3>
+      <p>Electron capture cross sections and β-decay half-lives under the conditions of core-collapse supernovae and neutron star mergers, where nuclear structure input controls the deleptonisation of the collapsing core.</p>
+
+      <h3>From nuclei to neutron stars</h3>
+      <p>Linking finite-nuclei observables — dipole polarizability, neutron skin thickness, the symmetry energy — to neutron star radii, tidal deformabilities and compactness, connecting terrestrial experiments to multimessenger astronomy.</p>
+
+      <h3>Machine learning</h3>
+      <p>Neural networks, support vector regression and Gaussian process regression applied to nuclear masses and related observables, with attention to what these models can and cannot extrapolate away from the stability line.</p>
+    </section>
+
+    <section id="publications">
+      <h2 class="head">Selected publications</h2>
+      <p>Over 40 peer-reviewed articles. The complete and current list is on <a href="https://scholar.google.com/citations?user=m6lN7uwAAAAJ">Google Scholar</a>.</p>
+      <ol class="pubs">
+        <li>
+          <span class="yr">2026</span>
+          <span>
+            <span class="t"><a href="https://doi.org/10.1103/9mnb-t3yz">Universal relation between dipole polarizability of finite nuclei and neutron-star compactness</a></span><br>
+            <span class="src">P. S. Koliogiannis, T. Ghosh, E. Yüksel, N. Paar · Phys. Rev. C 113, 055809</span>
+          </span>
+        </li>
+        <li>
+          <span class="yr">2026</span>
+          <span>
+            <span class="t"><a href="https://doi.org/10.3847/2041-8213/ae261d">Dipole polarizability of finite nuclei as a probe of neutron stars</a></span><br>
+            <span class="src">P. S. Koliogiannis, E. Yüksel, T. Ghosh, N. Paar · Astrophys. J. Lett. 996, L18</span>
+          </span>
+        </li>
+        <li>
+          <span class="yr">2025</span>
+          <span>
+            <span class="t">Hot pygmy dipole strength in nickel isotopes</span><br>
+            <span class="src">A. Kaur, E. Yüksel, N. Paar · Phys. Rev. C 112, L051304<span class="tag">Letter</span></span>
+          </span>
+        </li>
+        <li>
+          <span class="yr">2025</span>
+          <span>
+            <span class="t"><a href="https://doi.org/10.1103/96g9-1ff5">Electric and magnetic γ-ray strength functions at finite temperature</a></span><br>
+            <span class="src">A. Kaur, E. Yüksel, N. Paar · Phys. Rev. C 112, 014307</span>
+          </span>
+        </li>
+        <li>
+          <span class="yr">2025</span>
+          <span>
+            <span class="t"><a href="https://doi.org/10.1103/wrzp-c3n9">α-particle condensation in diluted <sup>16</sup>O at finite temperature</a></span><br>
+            <span class="src">M. Davies, E. Yüksel, J.-P. Ebran, E. Khan, P. Stevenson · Phys. Rev. C 112, 014311<span class="tag">Editors' Suggestion</span></span>
+          </span>
+        </li>
+        <li>
+          <span class="yr">2025</span>
+          <span>
+            <span class="t"><a href="https://doi.org/10.1103/PhysRevLett.134.092501">Increasing octupole collectivity across the Z = 64 isotopic chain: B(E3) values in <sup>150</sup>Gd</a></span><br>
+            <span class="src">S. Pascu, E. Yüksel, et al. · Phys. Rev. Lett. 134, 092501</span>
+          </span>
+        </li>
+        <li>
+          <span class="yr">2024</span>
+          <span>
+            <span class="t"><a href="https://doi.org/10.1103/PhysRevC.109.064322">Nuclear mass predictions using machine learning models</a></span><br>
+            <span class="src">E. Yüksel, D. Soydaner, H. Bahtiyar · Phys. Rev. C 109, 064322<span class="tag">Editors' Suggestion</span></span>
+          </span>
+        </li>
+        <li>
+          <span class="yr">2023</span>
+          <span>
+            <span class="t"><a href="https://doi.org/10.1038/s41467-023-40613-2">Expanding the limits of nuclear stability at finite temperature</a></span><br>
+            <span class="src">A. Ravlić, E. Yüksel, T. Nikšić, N. Paar · Nature Communications 14, 4834</span>
+          </span>
+        </li>
+        <li>
+          <span class="yr">2023</span>
+          <span>
+            <span class="t"><a href="https://doi.org/10.1016/j.physletb.2022.137622">Implications of parity-violating electron scattering experiments on <sup>48</sup>Ca and <sup>208</sup>Pb</a></span><br>
+            <span class="src">E. Yüksel, N. Paar · Phys. Lett. B 836, 137622</span>
+          </span>
+        </li>
+        <li>
+          <span class="yr">2019</span>
+          <span>
+            <span class="t"><a href="https://doi.org/10.1103/PhysRevC.99.034318">Optimizing the relativistic energy density functional with nuclear ground state and collective excitation properties</a></span><br>
+            <span class="src">E. Yüksel, T. Marketin, N. Paar · Phys. Rev. C 99, 034318 — the DD-PCX functional</span>
+          </span>
+        </li>
+      </ol>
+    </section>
+
+    <section id="group">
+      <h2 class="head">Group &amp; opportunities</h2>
+
+      <h3>Current members</h3>
+      <ul class="plain">
+        <li>Miriam Davies — PhD student (2023–)</li>
+        <li>Joshua D. Fowler — MSc student</li>
+      </ul>
+
+      <h3>Joining</h3>
+      <p>I am glad to hear from prospective PhD students interested in nuclear structure theory, nuclear astrophysics, or machine learning applied to nuclear data. I am also Surrey lead for <a href="https://planet-dfa.ac.uk/">PLANET</a>, a UKRI Doctoral Focal Award run with the Universities of York, Cambridge, Edinburgh and Lancaster, which funds PhD projects co-created with industry.</p>
+
+      <h3>Funding</h3>
+      <p>My work is supported by STFC through the TENSAR programme, and computing time is provided by the DiRAC High Performance Computing Facility.</p>
+    </section>
+
+    <section id="service">
+      <h2 class="head">Service</h2>
+      <p>Subject Editor, <em>Proceedings of the Royal Society A</em>. Grant reviewer for UKRI. Referee for Physical Review C and Letters, Physics Letters B, Nuclear Physics A, the European Physical Journal A, and others.</p>
+      <p>Recent organisation: the ESNT workshop on (Q)RPA-based methods (CEA Saclay, 2026), the IOP Nuclear Physics Conference 2026, and NSP2025 in Sivas.</p>
+    </section>
+
+    <section id="contact">
+      <h2 class="head">Contact</h2>
+      <p>
+        School of Mathematics and Physics<br>
+        University of Surrey, Guildford, Surrey GU2 7XH, United Kingdom<br>
+        Office 13 BC 03
+      </p>
+      <p><a href="mailto:e.yuksel@surrey.ac.uk">e.yuksel@surrey.ac.uk</a> · +44 (0)1483 689412</p>
+    </section>
+
+    <footer>
+      <p>Last updated July 2026 · Plain HTML, hosted on GitHub Pages.</p>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+(function () {
+  const g = document.getElementById('nuclides');
+  if (!g) return;
+  const NS = 'http://www.w3.org/2000/svg';
+  const cols = 96, size = 6.5, gap = 1;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  for (let i = 0; i < cols; i++) {
+    const x = i * (size + gap);
+    const centre = 74 - (i / cols) * 58;
+    const width = 1 + Math.round((i / cols) * 4.2);
+    for (let d = -width; d <= width; d++) {
+      const y = centre + d * (size + gap);
+      if (y < 2 || y > 86) continue;
+      const t = Math.abs(d) / (width + 0.6);
+      const r = document.createElementNS(NS, 'rect');
+      r.setAttribute('x', x.toFixed(1));
+      r.setAttribute('y', y.toFixed(1));
+      r.setAttribute('width', size);
+      r.setAttribute('height', size);
+      r.setAttribute('fill', t < 0.25 ? '#1b2a4a' : t < 0.6 ? '#0e6e6b' : '#c8d3d6');
+      r.setAttribute('opacity', (1 - t * 0.55).toFixed(2));
+      r.setAttribute('class', 'cell');
+      if (!reduce) r.style.animationDelay = (i * 7 + Math.abs(d) * 25) + 'ms';
+      g.appendChild(r);
+    }
+  }
+})();
+</script>
+</body>
+</html>
